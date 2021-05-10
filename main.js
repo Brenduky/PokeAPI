@@ -23,3 +23,6 @@
         }
 
         consultarPokemones()
+
+
+        //https://www.youtube.com/watch?v=MZWUKEkcQaY&t=399s
