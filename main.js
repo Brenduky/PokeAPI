@@ -4,11 +4,9 @@ let contenedor = document.getElementById("contenedorPokemon")
         const resultado = await fetch (`https://pokeapi.co/api/v2/pokemon/${id}`);
         const pokemon = await resultado.json()
 
-        console.log(pokemon)
-       
-        let result = crearPokemon(pokemon,num)
+        console.log(pokemon.name,num)
+        crearPokemon(pokemon,num)
 
-        contenedor.innerHTML = result
 
 }
 
