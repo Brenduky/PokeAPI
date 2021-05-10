@@ -9,7 +9,7 @@
                 console.log (pokemon.name, num)
             })
         })
-        }
+    }
 
         function consultarPokemones() {
             let primerID = Math.round(Math.random()*150)
@@ -19,8 +19,15 @@
             consultarPokemon(segundoID, 2)
         }
 
-        function crearPokemon({name},num) {
+        function crearPokemon(pokemon,num) {
+            let item = contenedor.querySelector(`#pokemon-${num}`)
             
+            let imagen = item.getElementsByTagName("img")[0]
+            imagen.setAttribute("src", pokemon.sprites.front_default );
+            imagen.setAttribute("alt", pokemon.name)
+        
+            let nombre = item.getElementsByTagName("p")[0]
+            nombre.textContent = pokemon.name  
         }
 
         consultarPokemones()
