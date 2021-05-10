@@ -6,6 +6,7 @@
             response.json()
             .then(function (pokemon) {
                 crearPokemon(pokemon,num)
+                console.log (pokemon.name, num)
             })
         })
         }
@@ -18,7 +19,7 @@
             consultarPokemon(segundoID, 2)
         }
 
-        function crearPokemon(pokemon,num) {
+        function crearPokemon({name},num) {
             
         }
 
