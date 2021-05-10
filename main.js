@@ -1,14 +1,18 @@
-    let contenedor = document.getElementById("contenedorPokemon")
+let contenedor = document.getElementById("contenedorPokemon")
 
-       function consultarPokemon(id, num) {
-            fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-            .then(function (response) {
-            response.json()
-            .then(function (pokemon) {
-                crearPokemon(pokemon,num)
-            })
-        })
-        }
+    const consultarPokemon = async (id, num) => {
+        const resultado = await fetch (`https://pokeapi.co/api/v2/pokemon/${id}`);
+        const datos = await resultado.json()
+        const pokemones = datos.results
+
+        const result = pokemones 
+        .map((pokemon) => crearPokemon(pokemon, num))
+        .join(' ')
+
+        contenedor.innerHTML = result
+        console.log(pokemones)
+
+    }
 
         function consultarPokemones() {
             let primerID = Math.round(Math.random()*150)
@@ -19,6 +23,7 @@
         }
 
         function crearPokemon(pokemon,num) {
+            return `holiwi`
             
         }
 
