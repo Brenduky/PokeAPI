@@ -6,7 +6,7 @@ let contenedor = document.getElementById("contenedorPokemon")
 
         console.log(pokemon)
        
-        const result = crearPokemon(pokemon,num)
+        let result = crearPokemon(pokemon,num)
 
         contenedor.innerHTML = result
 
@@ -21,24 +21,15 @@ function consultarPokemones() {
 }
 
 
-const crearPokemon = ({sprites,name,base_experience},num) => {
-    return `        
-    <div class="Pokemon">
-        <img src="${sprites.front_default}" alt="${name} Sprite">
-        <p>Pokemon${num}</p>
-        <p>${name}</p>
-        <p>${base_experience}</p>
-    </div>        
+const crearPokemon = ({sprites,name},num) => {
+    
+    let item = contenedor.querySelector(`pokemon-${num}`)
+    
+    let imagen = contenedor.getElementsByTagName("img")[0]
+    imagen.setAttribute("src", sprites.front_default )
 
-    <div class="vs">VS</div>
-
-    <div class="Pokemon">
-        <img src="${sprites.front_default}" alt="${name} Sprite">
-        <p>Pokemon${num}</p>
-        <p>${name}</p>
-        <p>${base_experience}</p>
-    </div>
-    `
+    let nombre = contenedor.getElementsByTagName("p")[0]
+    nombre.textContent = name
             
 }
 
