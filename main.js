@@ -3,11 +3,8 @@ let contenedor = document.getElementById("contenedorPokemon")
  const consultarPokemon = async (id, num) => {
         const resultado = await fetch (`https://pokeapi.co/api/v2/pokemon/${id}`);
         const pokemon = await resultado.json()
-
         console.log(pokemon.name,num)
         crearPokemon(pokemon,num)
-
-
 }
 
 function consultarPokemones() {
@@ -21,14 +18,15 @@ function consultarPokemones() {
 
 const crearPokemon = ({sprites,name},num) => {
     
-    let item = contenedor.querySelector(`pokemon-${num}`)
-    
-    let imagen = contenedor.getElementsByTagName("img")[0]
-    imagen.setAttribute("src", sprites.front_default )
+    let item = contenedor.querySelector(`#pokemon-${num}`)    
+    let imagen = item.getElementsByTagName("img")[0]
+    imagen.setAttribute("src", sprites.front_default );
+    imagen.setAttribute("alt", name)
 
-    let nombre = contenedor.getElementsByTagName("p")[0]
-    nombre.textContent = name
-            
+    let nombre = item.getElementsByTagName("p")[0]
+    nombre.textContent = name  
 }
+
+
 
     consultarPokemones()
