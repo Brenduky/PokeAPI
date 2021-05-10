@@ -1,10 +1,17 @@
+//variables
+
 let contenedor = document.getElementById("contenedorPokemon")
+
+//funciones
 
  const consultarPokemon = async (id, num) => {
         const resultado = await fetch (`https://pokeapi.co/api/v2/pokemon/${id}`);
         const pokemon = await resultado.json()
-        console.log(pokemon.name,num)
-        crearPokemon(pokemon,num)
+        const item = contenedor.querySelector(`#pokemon-${num}`)
+
+        const results = crearPokemon(pokemon,num)
+        item.innerHTML =  results
+
 }
 
 function consultarPokemones() {
@@ -16,17 +23,14 @@ function consultarPokemones() {
 }
 
 
-const crearPokemon = ({sprites,name},num) => {
-    
-    let item = contenedor.querySelector(`#pokemon-${num}`)    
-    let imagen = item.getElementsByTagName("img")[0]
-    imagen.setAttribute("src", sprites.front_default );
-    imagen.setAttribute("alt", name)
+const crearPokemon = ({sprites,name}) => {
 
-    let nombre = item.getElementsByTagName("p")[0]
-    nombre.textContent = name  
+    return `
+        <img src="${sprites.front_default}" alt="${name}">
+        <p>${name}</p>
+    `
 }
 
 
-
-    consultarPokemones()
+//Ejecutable
+ consultarPokemones()
